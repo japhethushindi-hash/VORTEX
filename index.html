@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="VORTEX helps you learn programming through guided paths, lessons, quizzes, and projects.">
+  <meta name="theme-color" content="#111827">
+  <title>VORTEX — Learn to Build</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+  <script src="python-lab.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#home"><span class="brand-symbol">V</span><span>VORTEX<small>LEARN TO BUILD</small></span></a>
+    <nav class="side-nav" aria-label="Main navigation">
+      <a class="nav-link active" href="#home" data-nav="home"><span>⌂</span> Overview</a>
+      <a class="nav-link" href="#paths" data-nav="paths"><span>▤</span> Learning paths</a>
+      <a class="nav-link" href="#python-lab" data-nav="python-lab"><span>Py</span> Python Learning Lab</a>
+      <a class="nav-link" href="#practice" data-nav="practice"><span>⌘</span> Practice lab</a>
+      <a class="nav-link" href="#projects" data-nav="projects"><span>◇</span> Projects</a>
+      <a class="nav-link" href="#career" data-nav="career"><span>↗</span> Career toolkit</a>
+      <a class="nav-link" href="#saved" data-nav="saved"><span>☆</span> Saved lessons</a>
+      <a class="nav-link" href="#subscriptions" data-nav="subscriptions"><span>♢</span> Plans & subscriptions</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="side-tip"><span class="tip-icon">✦</span><strong>Small steps count.</strong><p>15 minutes of practice today is better than waiting for the perfect time.</p></div>
+      <p class="sidebar-version">VORTEX v1.2 · Learning prototype</p>
+    </div>
+  </aside>
+
+  <div class="main-wrap">
+    <header class="topbar">
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">☰</button>
+      <div class="breadcrumb">Workspace <span>/</span> <strong id="breadcrumb-current">Overview</strong></div>
+      <div class="topbar-right"><span class="offline-pill"><i></i> Local mode</span><button class="avatar" id="profile-button" title="Local learner profile">L</button></div>
+    </header>
+
+    <main id="main-content">
+      <section id="home" class="page-section">
+        <div class="welcome-row">
+          <div><p class="eyebrow">YOUR DEVELOPER JOURNEY</p><h1>Build skills that <span>build your future.</span></h1><p class="muted intro">Learn programming one concept at a time, practise what you learn, and create projects you can show the world.</p></div>
+          <div class="hero-orb" aria-hidden="true"><div class="orb-inner">V<span>01</span></div><i class="orbit orbit-one"></i><i class="orbit orbit-two"></i></div>
+        </div>
+
+        <div class="quick-stats">
+          <article class="stat-card"><span class="stat-icon purple">▤</span><div><span class="stat-label">Lessons completed</span><strong id="stat-lessons">0</strong><small id="stat-lesson-sub">Start your first lesson</small></div></article>
+          <article class="stat-card"><span class="stat-icon blue">◎</span><div><span class="stat-label">Quiz accuracy</span><strong id="stat-accuracy">—</strong><small>Based on completed quizzes</small></div></article>
+          <article class="stat-card"><span class="stat-icon orange">⚡</span><div><span class="stat-label">Practice points</span><strong id="stat-points">0</strong><small>Earn points by learning</small></div></article>
+          <article class="stat-card"><span class="stat-icon green">◇</span><div><span class="stat-label">Projects explored</span><strong id="stat-projects">0</strong><small>Build your portfolio</small></div></article>
+        </div>
+
+        <div class="content-grid">
+          <section class="panel continue-panel">
+            <div class="panel-heading"><div><p class="eyebrow">PICK UP WHERE YOU LEFT OFF</p><h2>Recommended starting point</h2></div><span class="pill">Beginner</span></div>
+            <div class="continue-card"><div class="language-mark python-mark">Py</div><div class="continue-copy"><h3>Python foundations</h3><p>Variables, data types, conditions, loops, and functions.</p><div class="mini-track"><span id="python-progress-bar"></span></div><small id="python-progress-label">0% completed</small></div><button class="button primary" data-open-path="python">Start path <span>→</span></button></div>
+          </section>
+          <section class="panel goal-panel">
+            <div class="panel-heading"><div><p class="eyebrow">YOUR NEXT MILESTONE</p><h2>Learning goal</h2></div><span class="goal-star">✦</span></div>
+            <p class="goal-text">Complete 3 lessons to build your first learning streak.</p><div class="goal-track"><span id="goal-progress-bar"></span></div><div class="goal-footer"><span id="goal-progress-label">0 of 3 lessons</span><button class="text-button" id="set-goal">Change goal</button></div>
+          </section>
+        </div>
+
+        <section class="section-block">
+          <div class="section-title-row"><div><p class="eyebrow">EXPLORE TECHNOLOGIES</p><h2>Choose your learning path</h2></div><a class="text-link" href="#paths">View all paths →</a></div>
+          <div class="path-grid" id="featured-paths"></div>
+        </section>
+
+        <section class="section-block">
+          <div class="section-title-row"><div><p class="eyebrow">LEARN BY DOING</p><h2>Build something real</h2></div><a class="text-link" href="#projects">Browse projects →</a></div>
+          <div class="project-grid compact-projects" id="featured-projects"></div>
+        </section>
+      </section>
+
+      <section id="paths" class="page-section hidden">
+        <div class="page-heading"><p class="eyebrow">YOUR CURRICULUM</p><h1>Learning paths</h1><p class="muted">Choose a technology and progress from foundations to advanced concepts. Each path is a starter curriculum that can grow over time.</p></div>
+        <div class="filter-row"><label class="search-box"><span>⌕</span><input id="path-search" type="search" placeholder="Search languages and technologies..." aria-label="Search learning paths"></label><select id="level-filter" aria-label="Choose a roadmap stage"><option value="all">Choose stage inside a path</option><option value="Beginner">Beginner stage</option><option value="Intermediate">Intermediate stage</option><option value="Advanced">Advanced stage</option></select></div>
+        <div class="path-grid" id="all-paths"></div>
+      </section>
+
+      <section id="lesson-page" class="page-section hidden">
+        <button class="back-link" id="back-to-paths">← Back to learning paths</button>
+        <div id="lesson-detail"></div>
+      </section>
+
+
+      <section id="python-lab" class="page-section hidden">
+        <div class="page-heading"><p class="eyebrow">VORTEX PYTHON ACADEMY</p><h1>Python Learning Lab</h1><p class="muted">A guided path from your first line of Python to practical projects. Learn a concept, inspect the example, then solve a short exercise.</p></div>
+        <div class="python-summary panel"><div><span class="stat-label">YOUR PYTHON PROGRESS</span><strong id="py-progress-text">0 of 12 lessons completed</strong><div class="mini-track"><span id="py-progress-bar"></span></div></div><div class="python-summary-note"><strong>Learning honestly</strong><p>This version checks answers and code patterns in your browser. It does not execute arbitrary Python code yet.</p></div></div>
+        <div class="python-lab-layout"><aside class="panel python-lesson-menu"><h2>Course roadmap</h2><p class="muted">Start at Lesson 1. You can revisit completed lessons any time.</p><div id="py-lesson-list" class="py-lesson-list"></div></aside>
+          <article class="panel python-lesson-content" id="py-lesson-content" aria-live="polite"><p class="eyebrow">LESSON 1</p><h2>Meet Python</h2><p>Python is a general-purpose programming language known for readable syntax.</p></article>
+        </div>
+        <section class="panel python-exercise" id="py-exercise"><div class="exercise-heading"><div><p class="eyebrow">CHECK YOUR UNDERSTANDING</p><h2>Practice exercise</h2></div><span class="pill">Auto-checked</span></div><p id="py-exercise-prompt">Choose the correct answer for this lesson.</p><div id="py-exercise-options" class="py-exercise-options"></div><div id="py-exercise-feedback" class="quiz-feedback hidden" aria-live="polite"></div><div class="python-exercise-footer"><span class="muted" id="py-exercise-status">Complete the exercise to mark this lesson done.</span><button class="button primary" id="py-next-lesson" disabled>Next lesson →</button></div></section>
+        <section class="panel python-project"><p class="eyebrow">CAPSTONE PROJECT</p><h2>Build a Study Planner in Python</h2><p>Create a command-line program that lets a learner add study tasks, list them, mark them complete, and save them to a file. Build one feature at a time.</p><div class="python-project-grid"><div><strong>Milestone 1</strong><p>Store tasks in a Python list and display them with a loop.</p></div><div><strong>Milestone 2</strong><p>Use functions and input validation to add and complete tasks.</p></div><div><strong>Milestone 3</strong><p>Save and load tasks using JSON and handle file errors.</p></div></div><p class="muted">Success criteria: invalid choices do not crash the program, tasks survive restarting the app, and a README explains how to run it.</p></section>
+      </section>
+
+      <section id="practice" class="page-section hidden">
+        <div class="page-heading"><p class="eyebrow">PRACTICE MAKES PROGRESS</p><h1>Practice lab</h1><p class="muted">Test your knowledge with quick questions. You get feedback after each answer.</p></div>
+        <div class="practice-layout">
+          <aside class="panel quiz-side"><h3>Quick quiz</h3><p class="muted">Web and programming fundamentals</p><div class="quiz-topic"><span class="topic-dot purple-dot"></span><span>Programming basics</span><strong>5 Q</strong></div><div class="quiz-topic"><span class="topic-dot blue-dot"></span><span>Web foundations</span><strong>5 Q</strong></div><div class="quiz-topic"><span class="topic-dot green-dot"></span><span>Python basics</span><strong>5 Q</strong></div><p class="tiny muted">Quiz results are saved locally in this browser.</p></aside>
+          <div class="panel quiz-panel"><div class="quiz-header"><span class="pill">Knowledge check</span><span id="quiz-counter">Question 1 of 5</span></div><div class="quiz-track"><span id="quiz-track-fill"></span></div><h2 id="quiz-question">Loading question…</h2><div id="quiz-answers" class="quiz-answers"></div><div id="quiz-feedback" class="quiz-feedback hidden" aria-live="polite"></div><div class="quiz-footer"><span id="quiz-points" class="muted">+10 points for a correct answer</span><button class="button primary" id="quiz-next" disabled>Next question →</button></div></div>
+        </div>
+      </section>
+
+      <section id="projects" class="page-section hidden">
+        <div class="page-heading"><p class="eyebrow">MAKE YOUR SKILLS VISIBLE</p><h1>Project workshop</h1><p class="muted">Build small projects first. Each completed project can become part of your portfolio.</p></div>
+        <div class="project-grid" id="all-projects"></div>
+      </section>
+
+      <section id="career" class="page-section hidden">
+        <div class="page-heading"><p class="eyebrow">FROM LEARNER TO BUILDER</p><h1>Career toolkit</h1><p class="muted">Practical steps to prepare for internships, freelance work, and junior developer roles.</p></div>
+        <div class="career-grid">
+          <article class="panel career-card"><span class="career-icon">⌘</span><h2>Git & GitHub</h2><p>Learn version control, commits, branches, and how to present code repositories.</p><ul><li>Install Git and set your identity</li><li>Create a repository and README</li><li>Practise commits and branches</li></ul><span class="pill">Recommended first</span></article>
+          <article class="panel career-card"><span class="career-icon">▣</span><h2>Build a portfolio</h2><p>Show evidence of what you can build, not just certificates.</p><ul><li>Publish 2–3 finished projects</li><li>Explain the problem each solves</li><li>Include screenshots and setup steps</li></ul><span class="pill">Project-based</span></article>
+          <article class="panel career-card"><span class="career-icon">↗</span><h2>Prepare for opportunities</h2><p>Practise describing your work and solving small problems clearly.</p><ul><li>Write a short developer introduction</li><li>Practise common coding questions</li><li>Check internships and verified listings</li></ul><span class="pill">Keep learning</span></article>
+          <article class="panel career-card"><span class="career-icon">◇</span><h2>Freelance safely</h2><p>Start with small, clearly scoped projects and communicate professionally.</p><ul><li>Agree scope and milestones in writing</li><li>Use a safe payment arrangement</li><li>Never pay a recruiter to get a job</li></ul><span class="pill">Safety first</span></article>
+        </div>
+        <div class="notice"><strong>Important:</strong> VORTEX is a learning platform, not an employer or job guarantee. Verify opportunities and never pay someone who promises guaranteed employment.</div>
+      </section>
+
+      <section id="saved" class="page-section hidden">
+        <div class="page-heading"><p class="eyebrow">YOUR PERSONAL LIBRARY</p><h1>Saved lessons</h1><p class="muted">Keep lessons you want to revisit in one place.</p></div>
+        <div class="path-grid" id="saved-lessons"></div><p id="saved-empty" class="empty-state">No saved lessons yet. Open a learning path and save a lesson to see it here.</p>
+      </section>
+
+      <section id="subscriptions" class="page-section hidden">
+        <div class="page-heading"><p class="eyebrow">CHOOSE YOUR LEARNING PLAN</p><h1>Plans & subscriptions</h1><p class="muted">Start free, then choose a plan that fits your learning goals. Prices are KES 299/month for Plus and KES 699/month for Pro. Payment checkout requires a configured VORTEX server and approved payment-provider account.</p></div>
+        <div class="subscription-current panel"><div><p class="eyebrow">YOUR CURRENT SELECTION</p><h2 id="current-plan-name">Free Explorer</h2><p id="current-plan-description" class="muted">Core learning paths and practice tools.</p></div><span class="pill" id="subscription-status">Demo mode · no billing</span></div>
+        <div class="subscription-grid">
+          <article class="subscription-card panel"><p class="eyebrow">GET STARTED</p><h2>Free Explorer</h2><p class="subscription-price">KES 0 <span>/ forever</span></p><p class="subscription-summary">Explore programming and build a consistent learning habit.</p><ul><li>Learning paths and starter lessons</li><li>Python Learning Lab starter course</li><li>Practice quizzes and project briefs</li><li>Progress saved on this device</li></ul><button class="button secondary" data-select-plan="free">Choose Free</button></article>
+          <article class="subscription-card panel featured-plan"><span class="plan-ribbon">POPULAR</span><p class="eyebrow">FOR SERIOUS LEARNERS</p><h2>VORTEX Plus</h2><p class="subscription-price">KES 299 <span>/ month</span></p><p class="subscription-summary">A proposed low-cost plan for learners who want a more structured path.</p><ul><li>Everything in Free Explorer</li><li>Guided weekly study plans</li><li>Expanded exercise and project packs</li><li>Progress review checklist</li></ul><button class="button primary" data-buy-plan="plus">Continue with Plus</button></article>
+          <article class="subscription-card panel"><p class="eyebrow">FOR BUILDERS</p><h2>VORTEX Pro</h2><p class="subscription-price">KES 699 <span>/ month</span></p><p class="subscription-summary">A proposed plan for portfolio-focused learners and independent builders.</p><ul><li>Everything in Plus</li><li>Portfolio project roadmaps</li><li>Interview preparation packs</li><li>Project planning templates</li></ul><button class="button secondary" data-buy-plan="pro">Continue with Pro</button></article>
+        </div>
+        <div class="panel subscription-faq"><h2>Account and checkout</h2><p class="muted">Create an online account or sign in before starting checkout. M-Pesa is paid manually each month; card subscriptions renew automatically according to the plan terms. Test with sandbox credentials first.</p>
+          <div id="billing-account-status" class="notice" aria-live="polite">Not signed in. Create an account or sign in below.</div>
+          <form id="billing-auth-form" class="billing-form"><div class="billing-form-grid"><label>Action<select id="billing-auth-mode"><option value="register">Create account</option><option value="login">Sign in</option></select></label><label>First name<input id="billing-first-name" autocomplete="given-name" maxlength="80" required></label><label>Last name<input id="billing-last-name" autocomplete="family-name" maxlength="80" required></label><label>Email<input id="billing-email" type="email" autocomplete="email" required></label><label>Password (12+ characters)<input id="billing-password" type="password" minlength="12" autocomplete="current-password" required></label></div><button class="button primary" type="submit">Create account / Sign in</button><button class="button secondary" type="button" id="billing-signout">Sign out</button></form>
+          <form id="billing-checkout-form" class="billing-form"><h3>Choose payment method</h3><div class="billing-form-grid"><label>Plan<select id="billing-plan"><option value="plus">VORTEX Plus — KES 299/month</option><option value="pro">VORTEX Pro — KES 699/month</option></select></label><label>Payment method<select id="billing-method"><option value="mpesa">M-Pesa (manual monthly renewal)</option><option value="card">Card (automatic monthly renewal)</option></select></label><label id="billing-phone-wrap">M-Pesa phone number<input id="billing-phone" inputmode="tel" placeholder="254712345678" autocomplete="tel"></label></div><p class="muted">By continuing, you agree to pay the displayed plan price. Card plans renew monthly for up to 12 billing cycles in this initial integration; cancel before the next renewal if you do not want to continue.</p><button class="button primary" type="submit">Continue to secure payment</button><button class="button secondary" type="button" id="billing-cancel-card">Cancel card subscription</button></form>
+          <p id="plan-selection-message" class="notice" aria-live="polite">No payment has been made. Access is granted only after the server verifies payment status.</p>
+        </div>
+      </section>
+
+      <section id="profile" class="page-section hidden">
+        <div class="page-heading"><p class="eyebrow">LOCAL PROFILE</p><h1>Your learning settings</h1><p class="muted">Learning progress is currently stored locally. Billing accounts are managed separately by the VORTEX server.</p></div>
+        <div class="panel settings-panel"><label for="learner-name">Display name</label><input id="learner-name" type="text" maxlength="40" placeholder="Your name"><button class="button primary" id="save-profile">Save display name</button><hr><h3>Data and privacy</h3><p class="muted">Progress, saved lessons, quiz results, and your display name are stored locally on this device using browser storage. Clearing browser data may erase them.</p><button class="button danger-outline" id="clear-data">Clear all local VORTEX data</button><p id="settings-message" class="muted" aria-live="polite"></p></div>
+      </section>
+    </main>
+    <footer class="footer"><span>VORTEX · Learn to build your future.</span><span>Version 1.3 billing integration starter · <span id="footer-year"></span></span></footer>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
